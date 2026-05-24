@@ -1,4 +1,4 @@
-import "./../styles/Showcase.css";
+import "./../styles/ShowCase.css";
 
 function Showcase() {
   return (
