@@ -1,0 +1,136 @@
+.showcase {
+  display: flex;
+  width: 100%;
+  height: 600px;
+}
+
+.showcase-left, .showcase-right {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.showcase-text {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  color: #fff;
+}
+
+.showcase-left .showcase-text p {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.showcase-left .showcase-text button {
+  background: #1a2cff;
+  border: none;
+  padding: 12px 28px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.showcase-left .showcase-text button:hover {
+  background: #1320b8;
+  transform: translateY(-3px);
+}
+
+.showcase-right .showcase-text h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.showcase-right .showcase-text .pink {
+  color: #ff2bf4;
+  margin-right: 4px;
+}
+
+.showcase-right .showcase-text p {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+
+.showcase-right .showcase-text .careers {
+  display: inline-block;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.showcase-right .showcase-text .careers:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 992px) {
+  .showcase {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .showcase-left, .showcase-right {
+    height: 400px;
+  }
+
+  .showcase-text {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .showcase-left .showcase-text p {
+    font-size: 1.4rem;
+  }
+
+  .showcase-right .showcase-text p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .showcase-left, .showcase-right {
+    height: 300px;
+  }
+
+  .showcase-left .showcase-text p {
+    font-size: 1.2rem;
+  }
+
+  .showcase-left .showcase-text button {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .showcase-right .showcase-text h3 {
+    font-size: 1rem;
+  }
+
+  .showcase-right .showcase-text p {
+    font-size: 0.9rem;
+  }
+
+  .showcase-right .showcase-text .careers {
+    width: 100%;
+    max-width: 240px;
+    text-align: center;
+  }
+}
+

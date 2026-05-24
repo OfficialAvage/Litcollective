@@ -1,0 +1,92 @@
+.hero3 {
+  background: #000;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.logos-grid {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 40px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.column img {
+  max-width: 140px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.logos-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn span {
+  margin-left: 5px;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+@media (max-width: 992px) {
+  .logos-grid {
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .column img {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero3 {
+    padding: 40px 15px;
+  }
+
+  .logos-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .column {
+    gap: 20px;
+  }
+
+  .column img {
+    max-width: 100px;
+  }
+
+  .logos-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}
