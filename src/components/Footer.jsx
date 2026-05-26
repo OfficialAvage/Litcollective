@@ -2,7 +2,7 @@ import "./../styles/Footer.css";
 
 function Footer() {
   return (
-  <footer className="Showcase">
+    <footer className="footer-section">
       <div className="footer-container">
         <div className="footer-left">
           <h2>Your business will<br />never be the same</h2>
@@ -25,8 +25,8 @@ function Footer() {
         </div>
       </div>
 
-      <img src="uphand.png" alt="Hand 1" className="hand hand1" />
-      <img src="downhand.png" alt="Hand 2" className="hand hand2" />
+      <img src="uphand.png" alt="" className="hand hand1" />
+      <img src="downhand.png" alt="" className="hand hand2" />
     </footer>
   );
 }

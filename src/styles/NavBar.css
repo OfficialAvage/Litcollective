@@ -1,18 +1,15 @@
 .Navbar {
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 100;
   width: 100%;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   border-bottom: 1px solid rgba(26, 44, 255, 0.2);
-  padding: 18px 0;
+  padding: 16px 0;
   display: flex;
   justify-content: center;
-  align-items: center;
   animation: navDrop 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
@@ -27,18 +24,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   padding: 0 30px;
+  position: relative;
 }
 
 .navbar-logo {
   height: 26px;
+  flex-shrink: 0;
 }
 
+/* ── Desktop links (centred absolutely) ── */
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 28px;
+  gap: 26px;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -67,18 +66,20 @@
   transition: width 0.3s ease;
 }
 
-.navbar-links li a:hover {
-  color: #fff;
-}
+.navbar-links li a:hover        { color: #fff; }
+.navbar-links li a:hover::after { width: 100%; }
 
-.navbar-links li a:hover::after {
-  width: 100%;
+/* ── Right group (lang + hamburger) ── */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .navbar-lang {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.85rem;
   cursor: pointer;
@@ -86,22 +87,84 @@
 }
 
 .navbar-lang:hover { color: #fff; }
+.navbar-flag       { height: 14px; }
+.arrow             { font-size: 0.8rem; }
 
-.navbar-flag { height: 14px; }
+/* ── Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 110;
+}
 
-.arrow { font-size: 0.8rem; }
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
 
-@media (max-width: 992px) {
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide centred desktop links; show as slide-down drawer */
+  .navbar-links {
+    position: fixed;
+    top: 57px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(0, 0, 0, 0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(26, 44, 255, 0.25);
+    padding: 12px 0 20px;
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.35s ease;
+  }
+
+  .navbar-links.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navbar-links li a {
+    display: block;
+    padding: 13px 28px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .navbar-links li a::after { display: none; }
+
+  .navbar-links li:last-child a { border-bottom: none; }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
   .navbar-links {
     gap: 16px;
     font-size: 0.82rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .navbar-links { display: none; }
-
-  .navbar-container {
-    justify-content: space-between;
   }
 }

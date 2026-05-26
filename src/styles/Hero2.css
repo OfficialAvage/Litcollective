@@ -2,14 +2,15 @@
 .hero2 {
   position: relative;
   background: #000;
-  height: 100vh;
+  min-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  padding: 60px 20px;
 }
 
-/* ── Background Glow Orb ── */
+/* ── Background Glow ── */
 .hero2-glow {
   position: absolute;
   width: 700px;
@@ -34,7 +35,7 @@
   50%       { transform: translate(-50%, -50%) scale(1.18); opacity: 1; }
 }
 
-/* ── Rotating Ring ── */
+/* ── Rotating Ring (desktop only) ── */
 .hero2-ring {
   position: absolute;
   width: 500px;
@@ -69,10 +70,12 @@
   transform: perspective(1000px) rotateY(-5deg);
   transition: transform 0.25s ease-out;
   filter: drop-shadow(0 0 50px rgba(26, 44, 255, 0.35));
+  max-width: 90vw;
 }
 
 .hero2-image .main-img {
   width: 600px;
+  max-width: 100%;
   height: auto;
   display: block;
 }
@@ -99,6 +102,7 @@
   -webkit-backdrop-filter: blur(12px);
   animation: btnPulse 2.5s ease-in-out infinite;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .play-icon {
@@ -108,14 +112,10 @@
 
 @keyframes btnPulse {
   0%, 100% {
-    box-shadow:
-      0 0 0 0  rgba(255, 255, 255, 0.25),
-      0 0 20px rgba(26, 44, 255, 0.3);
+    box-shadow: 0 0 0 0  rgba(255, 255, 255, 0.25), 0 0 20px rgba(26, 44, 255, 0.3);
   }
   50% {
-    box-shadow:
-      0 0 0 18px rgba(255, 255, 255, 0),
-      0 0 35px rgba(26, 44, 255, 0.6);
+    box-shadow: 0 0 0 18px rgba(255, 255, 255, 0),  0 0 35px rgba(26, 44, 255, 0.6);
   }
 }
 
@@ -126,8 +126,8 @@
   box-shadow: 0 0 40px rgba(26, 44, 255, 0.7);
 }
 
-/* ── Hands ── */
-.hand {
+/* ── Hands (scoped to avoid Footer.css .hand conflict) ── */
+.hero2 .hand {
   position: absolute;
   top: 40%;
   width: 200px;
@@ -135,12 +135,12 @@
   z-index: 3;
 }
 
-.left-hand {
+.hero2 .left-hand {
   left: 0;
   animation: floatLeft 4.5s ease-in-out infinite;
 }
 
-.right-hand {
+.hero2 .right-hand {
   right: 0;
   animation: floatRight 4.5s ease-in-out infinite;
   animation-delay: -2.2s;
@@ -159,32 +159,34 @@
 /* ── Responsive ── */
 @media (max-width: 992px) {
   .hero2 {
-    height: auto;
     padding: 80px 20px;
   }
 
-  .hero2-image .main-img { width: 450px; }
+  .hero2-ring { display: none; }
 
-  .hand {
-    width: 140px;
-    top: 50%;
-  }
+  .hero2 .hand { width: 130px; top: 45%; }
 }
 
 @media (max-width: 600px) {
-  .hero2-image .main-img { width: 300px; }
+  .hero2 {
+    padding: 70px 16px;
+  }
 
   .play-btn {
     padding: 16px 20px;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
 
-  .hand {
-    width: 100px;
+  .hero2 .hand {
+    width: 90px;
     top: auto;
-    bottom: 20px;
+    bottom: 16px;
   }
 
-  .left-hand  { left: 10px; }
-  .right-hand { right: 10px; }
+  .hero2 .left-hand  { left: 8px; }
+  .hero2 .right-hand { right: 8px; }
+}
+
+@media (max-width: 400px) {
+  .hero2 .hand { display: none; }
 }
