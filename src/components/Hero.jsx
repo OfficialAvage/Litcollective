@@ -15,8 +15,22 @@ function Hero() {
       const y = (e.clientY / height - 0.5) * 12;
       sceneRef.current.style.transform = `rotateX(${-y}deg) rotateY(${x}deg)`;
     };
+
+    const handleTouchMove = (e) => {
+      if (!sceneRef.current || !heroRef.current) return;
+      const touch = e.touches[0];
+      const { width, height } = heroRef.current.getBoundingClientRect();
+      const x = (touch.clientX / width - 0.5) * 18;
+      const y = (touch.clientY / height - 0.5) * 12;
+      sceneRef.current.style.transform = `rotateX(${-y}deg) rotateY(${x}deg)`;
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
   }, []);
 
   return (

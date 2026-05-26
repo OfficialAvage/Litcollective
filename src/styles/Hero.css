@@ -261,8 +261,16 @@
     min-height: 100svh;
   }
 
-  .hero-3d-wrapper,
   .particles { display: none; }
+
+  .hero-3d-wrapper {
+    width: 320px;
+    height: 320px;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    opacity: 0.45;
+  }
 
   .hero-content { max-width: 100%; }
 
